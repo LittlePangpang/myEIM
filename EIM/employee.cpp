@@ -1,0 +1,294 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "employee.h"
+#include "Unit1.h"
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFm_employee *Fm_employee;
+//---------------------------------------------------------------------------
+__fastcall TFm_employee::TFm_employee(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::DBEditTrue()
+{ 
+ DBEdit1->Enabled=true; 
+ DBEdit2->Enabled=true; 
+ DBEdit3->Enabled=true; 
+ DBEdit4->Enabled=true; 
+ DBEdit5->Enabled=true; 
+ DBEdit6->Enabled=true; 
+ DBEdit7->Enabled=true; 
+ DBEdit8->Enabled=true; 
+ DBEdit9->Enabled=true; 
+ DBEdit10->Enabled=true; 
+ DBEdit11->Enabled=true; 
+} 
+//------------------------------------------------------------
+void __fastcall TFm_employee::DBEditFalse() 
+{ 
+ DBEdit1->Enabled=false; 
+ DBEdit2->Enabled=false; 
+ DBEdit3->Enabled=false; 
+ DBEdit4->Enabled=false; 
+ DBEdit5->Enabled=false; 
+ DBEdit6->Enabled=false; 
+ DBEdit7->Enabled=false;
+ DBEdit8->Enabled=false;
+ DBEdit9->Enabled=false; 
+ DBEdit10->Enabled=false; 
+ DBEdit11->Enabled=false; 
+} 
+//------------------------------------------------------------
+void __fastcall TFm_employee::FormShow(TObject *Sender)
+{
+AnsiString S;
+ShortDateFormat="yyyy-mm-dd"; //设定日期格式
+S="select * from employee ";
+employeeQuery->Close();
+employeeQuery->SQL->Clear();
+employeeQuery->SQL->Add(S);
+employeeQuery->Open();
+bt_new->Enabled=true;
+bt_modify->Enabled=true;
+bt_delete->Enabled=true;
+bt_search->Enabled=true;
+bt_save->Enabled=false;
+bt_cancel->Enabled=false;
+DBEditFalse();
+if(employeeQuery->IsEmpty())
+{
+bt_modify->Enabled=false;
+bt_delete->Enabled=false;
+}
+//下拉内容
+ S="select * from basic where xm='学历'"; 
+ Query->Close(); 
+ Query->SQL->Clear(); 
+ Query->SQL->Add(S); 
+ Query->Open();
+ DBEdit5->Items->Clear(); 
+ if(!Query->IsEmpty()) 
+ { 
+ while(!Query->Eof) 
+ { 
+ DBEdit5->Items->Add(Query->FieldByName("sjnr")->AsString); 
+ Query->Next(); 
+ } 
+ } 
+ S="select * from basic where xm='部门'"; 
+ Query->Close(); 
+ Query->SQL->Clear(); 
+ Query->SQL->Add(S); 
+ Query->Open(); 
+ DBEdit6->Items->Clear(); 
+ if(!Query->IsEmpty()) 
+ { 
+ while(!Query->Eof) 
+ { 
+ DBEdit6->Items->Add(Query->FieldByName("sjnr")->AsString); 
+ Query->Next(); 
+ } 
+ } 
+ S="select * from basic where xm='职务'"; 
+ Query->Close(); 
+ Query->SQL->Clear(); 
+ Query->SQL->Add(S); 
+ Query->Open(); 
+ DBEdit7->Items->Clear(); 
+ if(!Query->IsEmpty()) 
+ { 
+ while(!Query->Eof) 
+ { 
+ DBEdit7->Items->Add(Query->FieldByName("sjnr")->AsString);
+ Query->Next(); 
+ } 
+ }
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::bt_newClick(TObject *Sender)
+{
+AnsiString S; 
+ DBNavigator1->Enabled=false; 
+ bt_search->Enabled=false; 
+ bt_new->Enabled=false; 
+ bt_save->Enabled=true; 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false; 
+ bt_cancel->Enabled=true; 
+ DBEditTrue(); 
+ S="select Max(bh) as bh from employee"; 
+ Query->Close(); 
+ Query->SQL->Clear(); 
+ Query->SQL->Add(S); 
+ Query->Open(); 
+ Temp=Query->FieldByName("bh")->AsString; 
+ if(Temp!="") 
+ { 
+ Temp=IntToStr(StrToInt(Temp)+10001); 
+ VBh=Temp.SubString(2,4); 
+ } 
+ else 
+ VBh="0001"; 
+ employeeQuery->Append(); 
+ DBEdit1->Field->Text=VBh; 
+ DBEdit2->SetFocus();
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::bt_modifyClick(TObject *Sender)
+{
+DBNavigator1->Enabled=false; 
+ bt_search->Enabled=false; 
+ bt_new->Enabled=false; 
+ bt_save->Enabled=true; 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false;
+ bt_cancel->Enabled=true; 
+ DBEditTrue(); 
+ employeeQuery->Edit(); 
+ DBEdit2->SetFocus();        
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::bt_deleteClick(TObject *Sender)
+{
+if (MessageDlg("确认数据删除吗 ?", mtConfirmation,TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes)
+ { 
+ employeeQuery->Delete(); 
+ if (employeeQuery->IsEmpty()) 
+ { 
+ bt_new->Enabled=true; 
+ bt_save->Enabled=false; 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false; 
+ bt_cancel->Enabled=false; 
+ bt_search->Enabled=false; 
+ } 
+ }        
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::bt_cancelClick(TObject *Sender)
+{
+employeeQuery->Cancel();
+DBNavigator1->Enabled=true; 
+ bt_search->Enabled=true; 
+ bt_new->Enabled=true; 
+ bt_save->Enabled=false; 
+ bt_modify->Enabled=true; 
+ bt_delete->Enabled=true; 
+ bt_cancel->Enabled=false; 
+ DBEditFalse(); 
+ if(employeeQuery->IsEmpty()) 
+ { 
+ bt_search->Enabled=false; 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false; 
+ }        
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::bt_searchClick(TObject *Sender)
+{
+DBEdit2->Visible=false; 
+ Edit100->Visible=true; 
+ DBNavigator1->Enabled=false; 
+ bt_new->Enabled=false; 
+ bt_save->Enabled=false; 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false; 
+ bt_cancel->Enabled=false; 
+ bt_search->Visible=false; 
+ bt_exit->Visible=false; 
+ b_Cancel->Visible=true; 
+ b_Search->Visible=true; 
+ Edit100->SetFocus(); 
+ Edit100->Text="";        
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::b_SearchClick(TObject *Sender)
+{
+AnsiString S; 
+ if(Edit100->Text!="") 
+ { 
+ S="select * from employee where xm like'%"+Edit100->Text+"%'";
+ employeeQuery->Close(); 
+ employeeQuery->SQL->Clear(); 
+ employeeQuery->SQL->Add(S); 
+ employeeQuery->Open(); 
+ if(employeeQuery->IsEmpty()) 
+ { 
+ S="select * from employee"; 
+ employeeQuery->Close(); 
+ employeeQuery->SQL->Clear(); 
+ employeeQuery->SQL->Add(S); 
+ employeeQuery->Open(); 
+ Application->MessageBox("未找到匹配记录！ ", " 信 息 ",MB_ICONINFORMATION);
+ } 
+ } 
+ DBEdit2->Visible=true; 
+ Edit100->Visible=false; 
+ bt_search->Visible=true;
+ bt_exit->Visible=true; 
+ b_Cancel->Visible=false; 
+ b_Search->Visible=false; 
+ DBNavigator1->Enabled=true; 
+ bt_new->Enabled=true; 
+ bt_modify->Enabled=true; 
+ bt_delete->Enabled=true; 
+ if (employeeQuery->IsEmpty()) 
+ { 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false; 
+ }
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::b_CancelClick(TObject *Sender)
+{
+DBEdit2->Visible=true; 
+ Edit100->Visible=false; 
+ bt_search->Visible=true; 
+ bt_exit->Visible=true; 
+ b_Cancel->Visible=false; 
+ b_Search->Visible=false; 
+ DBNavigator1->Enabled=true; 
+ bt_new->Enabled=true;
+ bt_modify->Enabled=true; 
+ bt_delete->Enabled=true; 
+ if (employeeQuery->IsEmpty()) 
+ { 
+ bt_modify->Enabled=false; 
+ bt_delete->Enabled=false; 
+ }
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::bt_exitClick(TObject *Sender)
+{
+Close();        
+}
+//---------------------------------------------------------------------------
+void __fastcall TFm_employee::FormKeyPress(TObject *Sender, char &Key)
+{
+if(Key==char(13)) 
+ SelectNext((TWinControl*)(Sender),true,true);        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFm_employee::bt_saveClick(TObject *Sender)
+{
+autoinc(); 
+ DBNavigator1->Enabled=true; 
+ bt_search->Enabled=true; 
+ bt_new->Enabled=true; 
+ bt_save->Enabled=false; 
+ bt_modify->Enabled=true; 
+ bt_delete->Enabled=true; 
+ bt_cancel->Enabled=false; 
+ DBEditFalse(); 
+ bt_new->SetFocus();         
+}
+//---------------------------------------------------------------------------
+

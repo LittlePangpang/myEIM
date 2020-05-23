@@ -1,0 +1,408 @@
+object Fm_employeeseek: TFm_employeeseek
+  Left = 307
+  Top = 175
+  Width = 952
+  Height = 540
+  Caption = #21592#24037#36164#26009#26597#35810
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = #23435#20307
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 16
+  object Label1: TLabel
+    Left = 0
+    Top = 0
+    Width = 936
+    Height = 40
+    Align = alTop
+    Alignment = taCenter
+    Caption = #21592#24037#20449#24687#26597#35810
+    Color = clCream
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clMenuHighlight
+    Font.Height = -40
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Layout = tlCenter
+  end
+  object Label2: TLabel
+    Left = 80
+    Top = 80
+    Width = 32
+    Height = 16
+    Caption = #32534#21495
+    Layout = tlCenter
+  end
+  object Label3: TLabel
+    Left = 272
+    Top = 80
+    Width = 32
+    Height = 16
+    Caption = #22995#21517
+    Layout = tlCenter
+  end
+  object Label4: TLabel
+    Left = 480
+    Top = 80
+    Width = 32
+    Height = 16
+    Caption = #24615#21035
+    Layout = tlCenter
+  end
+  object Label5: TLabel
+    Left = 680
+    Top = 80
+    Width = 32
+    Height = 16
+    Caption = #23398#21382
+    Layout = tlCenter
+  end
+  object Label6: TLabel
+    Left = 48
+    Top = 120
+    Width = 64
+    Height = 16
+    Caption = #38582#23646#37096#38376
+    Layout = tlCenter
+  end
+  object Label7: TLabel
+    Left = 272
+    Top = 120
+    Width = 32
+    Height = 16
+    Caption = #32844#21153
+    Layout = tlCenter
+  end
+  object Label8: TLabel
+    Left = 448
+    Top = 120
+    Width = 64
+    Height = 16
+    Caption = #32852#31995#30005#35805
+    Layout = tlCenter
+  end
+  object Label9: TLabel
+    Left = 680
+    Top = 120
+    Width = 32
+    Height = 16
+    Caption = #20303#22336
+    Layout = tlCenter
+  end
+  object Label10: TLabel
+    Left = 48
+    Top = 160
+    Width = 64
+    Height = 16
+    Caption = #20986#29983#26085#26399
+    Layout = tlCenter
+  end
+  object Label11: TLabel
+    Left = 280
+    Top = 160
+    Width = 16
+    Height = 16
+    Caption = #33267
+    Layout = tlCenter
+  end
+  object Label12: TLabel
+    Left = 448
+    Top = 160
+    Width = 64
+    Height = 16
+    Caption = #20837#32844#26085#26399
+    Layout = tlCenter
+  end
+  object Label13: TLabel
+    Left = 688
+    Top = 160
+    Width = 16
+    Height = 16
+    Caption = #33267
+    Layout = tlCenter
+  end
+  object Edit1: TEdit
+    Left = 120
+    Top = 80
+    Width = 137
+    Height = 24
+    TabOrder = 0
+  end
+  object Edit2: TEdit
+    Left = 312
+    Top = 80
+    Width = 121
+    Height = 24
+    TabOrder = 1
+  end
+  object Edit7: TEdit
+    Left = 520
+    Top = 120
+    Width = 129
+    Height = 24
+    TabOrder = 2
+  end
+  object Edit8: TEdit
+    Left = 720
+    Top = 120
+    Width = 129
+    Height = 24
+    TabOrder = 3
+  end
+  object Edit3: TComboBox
+    Left = 520
+    Top = 80
+    Width = 129
+    Height = 24
+    ItemHeight = 16
+    TabOrder = 4
+    Items.Strings = (
+      #30007
+      #22899)
+  end
+  object Edit4: TComboBox
+    Left = 720
+    Top = 80
+    Width = 129
+    Height = 24
+    ItemHeight = 16
+    TabOrder = 5
+  end
+  object Edit5: TComboBox
+    Left = 120
+    Top = 120
+    Width = 137
+    Height = 24
+    ItemHeight = 16
+    TabOrder = 6
+  end
+  object Edit6: TComboBox
+    Left = 312
+    Top = 120
+    Width = 121
+    Height = 24
+    ItemHeight = 16
+    TabOrder = 7
+  end
+  object DTP1: TDateTimePicker
+    Left = 120
+    Top = 160
+    Width = 137
+    Height = 24
+    CalAlignment = dtaLeft
+    Date = 43969.6999369213
+    Time = 43969.6999369213
+    ShowCheckbox = True
+    DateFormat = dfShort
+    DateMode = dmComboBox
+    Kind = dtkDate
+    ParseInput = False
+    TabOrder = 8
+    OnClick = DTP1Click
+  end
+  object DTP2: TDateTimePicker
+    Left = 312
+    Top = 160
+    Width = 121
+    Height = 24
+    CalAlignment = dtaLeft
+    Date = 43969.7002583681
+    Time = 43969.7002583681
+    DateFormat = dfShort
+    DateMode = dmComboBox
+    Kind = dtkDate
+    ParseInput = False
+    TabOrder = 9
+  end
+  object DTP3: TDateTimePicker
+    Left = 520
+    Top = 160
+    Width = 129
+    Height = 24
+    CalAlignment = dtaLeft
+    Date = 43969.7005288542
+    Time = 43969.7005288542
+    ShowCheckbox = True
+    DateFormat = dfShort
+    DateMode = dmComboBox
+    Kind = dtkDate
+    ParseInput = False
+    TabOrder = 10
+    OnClick = DTP3Click
+  end
+  object DTP4: TDateTimePicker
+    Left = 720
+    Top = 160
+    Width = 129
+    Height = 24
+    CalAlignment = dtaLeft
+    Date = 43969.7005959491
+    Time = 43969.7005959491
+    DateFormat = dfShort
+    DateMode = dmComboBox
+    Kind = dtkDate
+    ParseInput = False
+    TabOrder = 11
+  end
+  object DBGrid1: TDBGrid
+    Left = 40
+    Top = 192
+    Width = 817
+    Height = 249
+    DataSource = seekDS
+    TabOrder = 12
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -16
+    TitleFont.Name = #23435#20307
+    TitleFont.Style = []
+    OnTitleClick = DBGrid1TitleClick
+  end
+  object bt_reset: TBitBtn
+    Left = 48
+    Top = 456
+    Width = 91
+    Height = 25
+    Caption = #37325#32622#26465#20214
+    TabOrder = 13
+    OnClick = bt_resetClick
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033333333B333
+      333B33FF33337F3333F73BB3777BB7777BB3377FFFF77FFFF77333B000000000
+      0B3333777777777777333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+      07333337F33333337F333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+      07333FF7F33333337FFFBBB0FFFFFFFF0BB37777F3333333777F3BB0FFFFFFFF
+      0BBB3777F3333FFF77773330FFFF000003333337F333777773333330FFFF0FF0
+      33333337F3337F37F3333330FFFF0F0B33333337F3337F77FF333330FFFF003B
+      B3333337FFFF77377FF333B000000333BB33337777777F3377FF3BB3333BB333
+      3BB33773333773333773B333333B3333333B7333333733333337}
+    NumGlyphs = 2
+  end
+  object bt_seek: TBitBtn
+    Left = 192
+    Top = 456
+    Width = 91
+    Height = 25
+    Caption = #26234#33021#26597#35810
+    TabOrder = 14
+    OnClick = bt_seekClick
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000120B0000120B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+      55555555FFFFFFFF5555555000000005555555577777777FF555550999999900
+      55555575555555775F55509999999901055557F55555557F75F5001111111101
+      105577FFFFFFFF7FF75F00000000000011057777777777775F755070FFFFFF0F
+      01105777F555557F7FF75500FFFFFF0F00105577F555FF7F77575550FF70000F
+      0F0055575FF777757F775555000FFFFF0F005555777555FF7F77555550FF7000
+      0F055555575FF777757F555555000FFFFF05555555777555FF7F55555550FF70
+      0005555555575FF7777555555555000555555555555577755555555555555555
+      5555555555555555555555555555555555555555555555555555}
+    NumGlyphs = 2
+  end
+  object bt_export: TBitBtn
+    Left = 344
+    Top = 456
+    Width = 91
+    Height = 25
+    Caption = #23548#20986
+    Enabled = False
+    TabOrder = 15
+    OnClick = bt_exportClick
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333330B7FFF
+      FFB0333333777F3333773333330B7FFFFFB0333333777F3333773333330B7FFF
+      FFB0333333777F3333773333330B7FFFFFB03FFFFF777FFFFF77000000000077
+      007077777777777777770FFFFFFFF00077B07F33333337FFFF770FFFFFFFF000
+      7BB07F3FF3FFF77FF7770F00F000F00090077F77377737777F770FFFFFFFF039
+      99337F3FFFF3F7F777FF0F0000F0F09999937F7777373777777F0FFFFFFFF999
+      99997F3FF3FFF77777770F00F000003999337F773777773777F30FFFF0FF0339
+      99337F3FF7F3733777F30F08F0F0337999337F7737F73F7777330FFFF0039999
+      93337FFFF7737777733300000033333333337777773333333333}
+    NumGlyphs = 2
+  end
+  object bt_print: TBitBtn
+    Left = 496
+    Top = 456
+    Width = 91
+    Height = 25
+    Caption = #25171#21360
+    Enabled = False
+    TabOrder = 16
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000120B0000120B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00500000000000
+      055557777777777775F508888888888880557F5FFFFFFFFFF75F080000000000
+      88057577777777775F755080FFFFFF05088057F7FFFFFF7575F70000000000F0
+      F08077777777775757F70FFFFFFFFF0F008075F5FF5FF57577F750F00F00FFF0
+      F08057F775775557F7F750FFFFFFFFF0F08057FF5555555757F7000FFFFFFFFF
+      0000777FF5FFFFF577770900F00000F000907F775777775777F7090FFFFFFFFF
+      00907F7F555555557757000FFFFFFFFF0F00777F5FFF5FF57F77550F000F00FF
+      0F05557F777577557F7F550FFFFFFFFF0005557F555FFFFF7775550FFF000000
+      05555575FF777777755555500055555555555557775555555555}
+    NumGlyphs = 2
+  end
+  object bt_exit: TBitBtn
+    Left = 648
+    Top = 456
+    Width = 75
+    Height = 25
+    Caption = #36864#20986
+    TabOrder = 17
+    OnClick = bt_exitClick
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000120B0000120B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033BBBBBBBBBB
+      BB33337777777777777F33BB00BBBBBBBB33337F77333333F37F33BB0BBBBBB0
+      BB33337F73F33337FF7F33BBB0BBBB000B33337F37FF3377737F33BBB00BB00B
+      BB33337F377F3773337F33BBBB0B00BBBB33337F337F7733337F33BBBB000BBB
+      BB33337F33777F33337F33EEEE000EEEEE33337F3F777FFF337F33EE0E80000E
+      EE33337F73F77773337F33EEE0800EEEEE33337F37377F33337F33EEEE000EEE
+      EE33337F33777F33337F33EEEEE00EEEEE33337F33377FF3337F33EEEEEE00EE
+      EE33337F333377F3337F33EEEEEE00EEEE33337F33337733337F33EEEEEEEEEE
+      EE33337FFFFFFFFFFF7F33EEEEEEEEEEEE333377777777777773}
+    NumGlyphs = 2
+  end
+  object seekQuery: TADOQuery
+    Connection = MainForm.ADOConnection1
+    Parameters = <>
+    SQL.Strings = (
+      'select * from employee')
+    Left = 880
+    Top = 80
+  end
+  object Query: TADOQuery
+    Connection = MainForm.ADOConnection1
+    Parameters = <>
+    Left = 880
+    Top = 112
+  end
+  object seekDS: TDataSource
+    DataSet = seekQuery
+    Left = 880
+    Top = 144
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 880
+    Top = 184
+  end
+end
